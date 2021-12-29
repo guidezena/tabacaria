@@ -10,23 +10,23 @@
 </head>
 
 <body class="container mt-5">
-    <h1>Cadastro</h1>
-    <form method="POST" action="{{route('product.store')}}">
+    <h1>Editar</h1>
+    <form method="POST" action="{{ route('product.update', $product->id) }}">
         @csrf
         <div class="row">
             <span class="form-label">Nome</span>
-            <input type="text" name="name" class="form-control">
+            <input type="text" name="name" class="form-control" value="{{$product->name}}">
         </div>
         <div class="row">
             <span class="form-label">Descrição</span>
-            <textarea class="form-control" name="description"></textarea>
+            <textarea class="form-control" name="description">{{$product->description}}</textarea>
         </div>
         <div class="row">
             <span class="form-label">Preço</span>
-            <input type="number" min="0.00" max="1000.00" name="price" class="form-control">
+            <input type="number" min="0.00" max="1000.00" name="price" class="form-control" value="{{$product->price}}">
         </div>
         <div class="row mt-4">
-            <button type="submit" class="btn btn-success btn-lg" >Salvar</button>
+            <button type="submit" class="btn btn-success btn-lg">Salvar</button>
         </div>
 
     </form>
