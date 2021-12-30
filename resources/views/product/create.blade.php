@@ -9,27 +9,29 @@
     <title>Cadastrar Produto</title>
 </head>
 
-<body class="container mt-5">
-    <h1>Cadastro</h1>
-    <form method="POST" action="{{route('product.store')}}">
-        @csrf
-        <div class="row">
-            <span class="form-label">Nome</span>
-            <input type="text" name="name" class="form-control">
-        </div>
-        <div class="row">
-            <span class="form-label">Descrição</span>
-            <textarea class="form-control" name="description"></textarea>
-        </div>
-        <div class="row">
-            <span class="form-label">Preço</span>
-            <input type="number" min="0.00" max="1000.00" name="price" class="form-control">
-        </div>
-        <div class="row mt-4">
-            <button type="submit" class="btn btn-success btn-lg" >Salvar</button>
-        </div>
-
-    </form>
+<body>
+    <main class="container mt-5">
+        @include('layouts.menu')
+        <h1>Cadastro</h1>
+        <form method="POST" action="{{route('product.store')}}">
+            @csrf
+            <div class="row">
+                <span class="form-label">Nome</span>
+                <input type="text" name="name" class="form-control">
+            </div>
+            <div class="row">
+                <span class="form-label">Descrição</span>
+                <textarea class="form-control" name="description"></textarea>
+            </div>
+            <div class="row">
+                <span class="form-label">Preço</span>
+                <input type="number" min="0.00" max="1000.00" name="price" class="form-control">
+            </div>
+            <div class="row mt-4">
+                <button type="submit" class="btn btn-success btn-lg">Salvar</button>
+            </div>
+        </form>
+    </main>
 </body>
 
 </html>

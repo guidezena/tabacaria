@@ -13,7 +13,7 @@
     <main class="container mt-5">
         @include('layouts.menu')
         <h1>Cadastro</h1>
-        <form method="POST" action="{{ route('category.store') }}">
+        <form method="POST" action="{{ route('tag.store') }}">
             @csrf
             <div class="row">
                 <span class="form-label">Nome</span>

@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Lista de categorias</title>
+    <title>Lista de tags</title>
     <script>
         function remover() {
-            return confirm('Você deseja remover a categoria??');
+            return confirm('Você deseja remover a tag?');
         }
     </script>
 
@@ -23,8 +23,8 @@
             {{session()->get('success')}}
         </div>
         @endif
-        <h1>Lista de categorias</h1>
-        <a href="{{ route('category.create') }} " class="btn btn-lg btn-primary">Criar categorias</a>
+        <h1>Lista de tags</h1>
+        <a href="{{ route('tag.create') }} " class="btn btn-lg btn-primary">Criar tag</a>
 
         <div class="row">
             <table class="table table-striped">
@@ -34,14 +34,14 @@
                         <th>Nome</th>
                     </tr>
                 <tbody>
-                    @foreach($categories as $cat)
+                    @foreach($tag as $tags)
                     <tr>
-                        <td>{{$cat -> id}}</td>
-                        <td>{{$cat -> name}}</td>
+                        <td>{{$tags -> id}}</td>
+                        <td>{{$tags -> name}}</td>
                         <td>
                             <a href="#" class="btn btn-sm btn-info">Visualizar</a>
-                            <a href="{{route('category.edit', $cat->id) }}" class="btn btn-sm btn-warning">Editar</a>
-                            <form action="{{route('category.destroy', $cat->id)}}" method="POST" onsubmit="return remover()" class="d-inline">
+                            <a href="{{route('tag.edit', $tags->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                            <form action="{{route('tag.destroy', $tags->id)}}" method="POST" onsubmit="return remover()" class="d-inline">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-danger">Apagar</button>
