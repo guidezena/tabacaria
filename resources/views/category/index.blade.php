@@ -16,8 +16,9 @@
 </head>
 
 <body>
+    @include('layouts.menu')
     <main class="container mt-5">
-        @include('layouts.menu')
+        
         @if(session()->has('success'))
         <div class="alert alert-success" role="alert">
             {{session()->get('success')}}
@@ -32,12 +33,14 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Produtos</th>
                     </tr>
                 <tbody>
                     @foreach($categories as $cat)
                     <tr>
                         <td>{{$cat -> id}}</td>
                         <td>{{$cat -> name}}</td>
+                        <td>{{$cat -> products -> count() }}</td>
                         <td>
                             <a href="#" class="btn btn-sm btn-info">Visualizar</a>
                             <a href="{{route('category.edit', $cat->id) }}" class="btn btn-sm btn-warning">Editar</a>

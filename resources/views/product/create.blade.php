@@ -10,8 +10,9 @@
 </head>
 
 <body>
+    @include('layouts.menu')
     <main class="container mt-5">
-        @include('layouts.menu')
+       
         <h1>Cadastro</h1>
         <form method="POST" action="{{route('product.store')}}">
             @csrf
@@ -23,6 +24,18 @@
                 <span class="form-label">Descrição</span>
                 <textarea class="form-control" name="description"></textarea>
             </div>
+            
+            <div class="row">
+                <span class="form-label">Categoria</span>
+                
+               <select class="form-select" name="category_id">
+                @foreach($categories as $category)
+                   <option value="{{$category->id}}">{{$category->name}}</option>
+                   @endforeach
+                </select>
+               
+            </div>
+            
             <div class="row">
                 <span class="form-label">Preço</span>
                 <input type="number" min="0.00" max="1000.00" name="price" class="form-control">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -14,7 +15,7 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('product.create');
+        return view('product.create')->with('categories', Category::all());
     }
 
     public function store(Request $request)
@@ -26,7 +27,7 @@ class ProductsController extends Controller
 
     public function edit(Product $product)
     {
-        return view('product.edit')->with('product', $product);
+        return view('product.edit')->with(['product' => $product, 'categories' => Category::all()]);
     }
     public function update(Request $request, Product $product)
     {

@@ -16,9 +16,9 @@
 </head>
 
 <body>
-
+    @include('layouts.menu')
     <main class="container mt-5">
-        @include('layouts.menu')
+        
 
         @if(session()->has('success'))
         <div class="alert alert-success" role="alert">
@@ -36,8 +36,8 @@
                         <th>Nome</th>
                         <th>Preço</th>
                         <th>Descrição</th>
+                        <th>Categoria</th>
                         <th>Opções</th>
-
                     </tr>
                 <tbody>
                     @foreach($products as $prod)
@@ -46,6 +46,8 @@
                         <td>{{$prod -> name}}</td>
                         <td>{{$prod -> price}}</td>
                         <td>{{$prod -> description}}</td>
+                        <td>{{$prod -> category->name}}</td>
+                       
                         <td>
                             <a href="#" class="btn btn-sm btn-info">Visualizar</a>
                             <a href="{{route('product.edit', $prod->id)}}" class="btn btn-sm btn-warning">Editar</a>

@@ -10,8 +10,8 @@
 </head>
 
 <body>
+    @include('layouts.menu')
     <main class="container mt-5">
-        @include('layouts.menu')
         <h1>Editar</h1>
         <form method="POST" action="{{ route('category.update', $category->id) }}">
             @csrf

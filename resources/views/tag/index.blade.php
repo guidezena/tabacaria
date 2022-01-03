@@ -16,8 +16,9 @@
 </head>
 
 <body>
+    @include('layouts.menu')
     <main class="container mt-5">
-        @include('layouts.menu')
+        
         @if(session()->has('success'))
         <div class="alert alert-success" role="alert">
             {{session()->get('success')}}
