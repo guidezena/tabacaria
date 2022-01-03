@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    @include('layouts.menu')
+@include('layouts.menu')
     <main class="container mt-5">
         
 
@@ -40,13 +40,15 @@
                         <th>Opções</th>
                     </tr>
                 <tbody>
+                    
                     @foreach($products as $prod)
+                    
                     <tr>
-                        <td>{{$prod -> id}}</td>
-                        <td>{{$prod -> name}}</td>
-                        <td>{{$prod -> price}}</td>
-                        <td>{{$prod -> description}}</td>
-                        <td>{{$prod -> category->name}}</td>
+                        <td>{{$prod->id}}</td>
+                        <td>{{$prod->name}}</td>
+                        <td>{{$prod->price}}</td>
+                        <td>{{$prod->description}}</td>
+                        <td>{{$prod->category()->pluck('name', 'created_at')->first()}}</td>
                        
                         <td>
                             <a href="#" class="btn btn-sm btn-info">Visualizar</a>
