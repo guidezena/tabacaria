@@ -14,7 +14,7 @@
     <main class="container mt-5">
        
         <h1>Cadastro</h1>
-        <form method="POST" action="{{route('product.store')}}">
+        <form method="POST" action="{{route('product.store')}}" enctype = "multipart/form-data">
             @csrf
             <div class="row">
                 <span class="form-label">Nome</span>
@@ -33,7 +33,10 @@
                    <option value="{{$category->id}}">{{$category->name}}</option>
                    @endforeach
                 </select>
-               
+            </div>
+            <div class="row">
+                <span class="form-label">Imagem</span>
+                <input type="file" min="0.00" max="1000.00" name="image" class="form-control">
             </div>
             
             <div class="row">

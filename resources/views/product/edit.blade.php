@@ -32,6 +32,10 @@
                 <input type="number" min="0.00" max="1000.00" name="price" class="form-control" value="{{$product->price}}">
             </div>
             <div class="row">
+                <span class="form-label">Imagem</span>
+                <input type="file" min="0.00" max="1000.00" name="image" class="form-control">
+            </div>
+            <div class="row">
                 <span class="form-label">Categoria</span>
                <select class="form-select" name="category_id">
                 @foreach($categories as $category)

@@ -26,46 +26,20 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-//TAG
 Route::resource('/product', ProductsController::class);
 Route::resource('/category', CategoriesController::class);
 Route::resource('/tag', TagController::class);
 
+//LIXEIRA
 
+Route::get('/trash/product',[ProductsController::class, 'trash'])->name('product.trash');
+Route::patch('product/restore/{id}', [ProductsController::class, 'restore'])->name('product.restore');
 
+Route::get('/trash/tag',[TagController::class, 'trash'])->name('tag.trash');
+Route::patch('tag/restore/{id}', [TagController::class, 'restore'])->name('tag.restore');
 
-
-
-
-
-
-
-
-
-
-
-/*
-//PRODUTOS
-Route::get('/product', [ProductsController::class, 'index'])->name('product.index');
-Route::get('/product/create', [ProductsController::class, 'create'])->name('product.create');
-Route::post('/product/store', [ProductsController::class, 'store'])->name('product.store');
-Route::get('/product/edit/{product}', [ProductsController::class, 'edit'])->name('product.edit');
-Route::post('/product/update/{product}', [ProductsController::class, 'update'])->name('product.update');
-Route::get('/product/destroy/{product}', [ProductsController::class, 'destroy'])->name('product.destroy');
-//CATEGORIAS 
-Route::get('/category', [CategoriesController::class, 'index'])->name('category.index');
-Route::get('/category/create', [CategoriesController::class, 'create'])->name('category.create');
-Route::post('/category/store', [CategoriesController::class, 'store'])->name('category.store');
-Route::get('/category/edit/{category}', [CategoriesController::class, 'edit'])->name('category.edit');
-Route::post('/category/update/{category}', [CategoriesController::class, 'update'])->name('category.update');
-Route::get('/category/destroy/{category}', [CategoriesController::class, 'destroy'])->name('category.destroy');
-//TAG
-Route::get('/tag', [TagsController::class, 'index'])->name('tag.index');
-Route::get('/tag/create', [TagsController::class, 'create'])->name('tag.create');
-Route::post('/tag/store', [TagsController::class, 'store'])->name('tag.store');
-Route::get('/tag/edit/{tag}', [TagsController::class, 'edit'])->name('tag.edit');
-Route::post('/tag/update/{tag}', [TagsController::class, 'update'])->name('tag.update');
-Route::get('/tag/destroy/{tag}', [TagsController::class, 'destroy'])->name('tag.destroy');*/
+Route::get('/trash/category',[CategoriesController::class, 'trash'])->name('category.trash');
+Route::patch('category/restore/{id}', [CategoriesController::class, 'restore'])->name('category.restore');
 
 
 

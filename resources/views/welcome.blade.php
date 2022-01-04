@@ -405,6 +405,7 @@
 </head>
 
 <body class="">
+    @include('layouts.menu')
     <main>
         <h1>tabacaria do espantalho</h1>
     </main>

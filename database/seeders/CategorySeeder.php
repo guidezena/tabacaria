@@ -21,17 +21,17 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'name' => 'Tabaco'
+            'name' => 'Semente'
         ]);
         Category::create([
-            'name' => 'Narguile'
+            'name' => 'Bonsai'
         ]);
        
         Category::create([
-            'name' => 'Seda'
+            'name' => 'Adubo'
         ]);
         Category::create([
-            'name' => 'Pod'
+            'name' => 'Flor'
         ]);
        
     }

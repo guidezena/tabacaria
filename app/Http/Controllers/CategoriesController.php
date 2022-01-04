@@ -39,4 +39,15 @@ class CategoriesController extends Controller
         session()->flash('success', 'categoria foi alterado com sucesso!');
         return redirect(route('category.index'));
     }
+    
+    public function trash(){
+        return view('category.trash')->with('categories', Category::onlyTrashed()->get());
+    }
+    
+    // public function restore($id){
+    //     $category = Category::onlyTrashed()->where('id',$id)->firstOrFail();
+    //     $category->restore();
+    //     session()->flash('success', 'A categoria foi restaurado com sucesso!');
+    //     return redirect(route('category.index'));
+    // }
 }

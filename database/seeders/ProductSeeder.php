@@ -15,14 +15,14 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::create([
-            'name' => 'Hie Tabaco',
-            'description' =>'Tabaco',
+            'name' => 'test2',
+            'description' =>'teste3',
             'category_id' => 3,
             'price'=> '21.00'
         ]);
         Product::create([
-            'name' => 'Cigarro',
-            'description' =>'Malboro vermelho',
+            'name' => 'teste 4',
+            'description' =>'tteste2',
             'category_id' => 2,
             'price'=> '10.00'
         ]);
