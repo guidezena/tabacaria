@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storae;
@@ -14,9 +15,12 @@ class ProductsController extends Controller
         return view('product.index')->with('products', Product::all());
     }
 
+    public function show(Product $product){
+        return view ('product.show');
+    }
     public function create()
     {
-        return view('product.create')->with('categories', Category::all());
+        return view('product.create')->with(['categories' => Category::all(), 'tags' => Tag::all()]);
     }
 
     public function store(Request $request)
@@ -28,20 +32,24 @@ class ProductsController extends Controller
             $image = "storage/product/imagem.png";
         }
 
-        Product::create([
+        $product = Product::create([
             'name'=>$request->name,
             'description'=>$request->description,
             'price'=>$request->price,
             'category_id'=>$request->category_id,
             'image'=>$image
         ]);
+        $product->tags()->sync($request->tags);
         session()->flash('success', 'Produto foi cadastrado com sucesso!');
         return redirect(route('product.index'));
     }
 
     public function edit(Product $product)
     {
-        return view('product.edit')->with(['product' => $product, 'categories' => Category::all()]);
+        return view('product.edit')->with
+        (['product' => $product,
+        'categories' => Category::all(), 
+        'tags' => Tag::all()]);
     }
 
     public function update(Request $request, Product $product)
@@ -63,6 +71,7 @@ class ProductsController extends Controller
         'category_id'=>$request->category_id,
         'image'=>$image
     ]);
+        $product->tags()->sync($request->tags);
         session()->flash('success', 'Produto foi alterado com sucesso!');
         return redirect(route('product.index'));
     }

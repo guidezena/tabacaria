@@ -26,20 +26,22 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('/product', ProductsController::class);
-Route::resource('/category', CategoriesController::class);
-Route::resource('/tag', TagController::class);
 
-//LIXEIRA
 
-Route::get('/trash/product',[ProductsController::class, 'trash'])->name('product.trash');
-Route::patch('product/restore/{id}', [ProductsController::class, 'restore'])->name('product.restore');
+//GRUPO PARA QUEM É USUARIO ADMINISTRADOR
+Route::group(['middleware' => 'isAdmin'], function(){
+    Route::resource('/product', ProductsController::class,['except' => ['show']]);
+    Route::resource('/category', CategoriesController::class);
+    Route::resource('/tag', TagController::class);
+    //LIXEIRA
+    Route::get('/trash/product',[ProductsController::class, 'trash'])->name('product.trash');
+    Route::patch('product/restore/{id}', [ProductsController::class, 'restore'])->name('product.restore');
+    Route::get('/trash/tag',[TagController::class, 'trash'])->name('tag.trash');
+    Route::patch('tag/restore/{id}', [TagController::class, 'restore'])->name('tag.restore');
+    Route::get('/trash/category',[CategoriesController::class, 'trash'])->name('category.trash');
+    Route::patch('category/restore/{id}', [CategoriesController::class, 'restore'])->name('category.restore');
+});
 
-Route::get('/trash/tag',[TagController::class, 'trash'])->name('tag.trash');
-Route::patch('tag/restore/{id}', [TagController::class, 'restore'])->name('tag.restore');
-
-Route::get('/trash/category',[CategoriesController::class, 'trash'])->name('category.trash');
-Route::patch('category/restore/{id}', [CategoriesController::class, 'restore'])->name('category.restore');
-
+Route::resource('/product', ProductsController::class, ['only' => ['show']]);
 
 
