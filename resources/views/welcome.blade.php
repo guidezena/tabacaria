@@ -407,7 +407,7 @@
 <body class="">
     @include('layouts.menu')
     <main>
-        <h1>tabacaria do espantalho</h1>
+        <h1>asfdsdfsdf  </h1>
     </main>
 
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">

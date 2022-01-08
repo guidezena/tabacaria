@@ -22,7 +22,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         if($request->image){
-            $image = $request->file('image')->store('product');
+            $image = $request->file('image')->store('product', []);
             $image = "storage/" . $image;
         }else{
             $image = "storage/product/imagem.png";
