@@ -51,7 +51,6 @@
                         <td>{{$prod->price}}</td>
                         <td>{{$prod->description}}</td>
                         <td>{{$prod->category()->pluck('name', 'created_at')->first()}}</td>
-                       
                         <td>
                             <a href="#" class="btn btn-sm btn-info">Visualizar</a>
                             <a href="{{route('product.edit', $prod->id)}}" class="btn btn-sm btn-warning">Editar</a>

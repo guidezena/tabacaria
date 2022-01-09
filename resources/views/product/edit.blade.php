@@ -36,6 +36,15 @@
                 <input type="file" min="0.00" max="1000.00" name="image" class="form-control">
             </div>
             <div class="row">
+                <span class="form-label">Tag</span>
+                
+               <select class="form-select" name="tags[]" multiple>
+                @foreach($tags as $tag)
+                   <option value="{{$tag->id}}" @if($product->tags->contains($tag->id)) selected @endif >{{$tag->name}}</option>
+                   @endforeach
+                </select>
+            </div>
+            <div class="row">
                 <span class="form-label">Categoria</span>
                <select class="form-select" name="category_id">
                 @foreach($categories as $category)

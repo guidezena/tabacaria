@@ -38,7 +38,15 @@
                 <span class="form-label">Imagem</span>
                 <input type="file" min="0.00" max="1000.00" name="image" class="form-control">
             </div>
-            
+            <div class="row">
+                <span class="form-label">Tag</span>
+                
+               <select class="form-select" name="tags[]" multiple>
+                @foreach($tags as $tag)
+                   <option value="{{$tag->id}}">{{$tag->name}}</option>
+                   @endforeach
+                </select>
+            </div>
             <div class="row">
                 <span class="form-label">Preço</span>
                 <input type="number" min="0.00" max="1000.00" name="price" class="form-control">

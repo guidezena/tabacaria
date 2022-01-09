@@ -12,7 +12,6 @@
             return confirm('Você deseja remover a tag?');
         }
     </script>
-
 </head>
 
 <body>
@@ -33,12 +32,14 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Quantidade</th>
                     </tr>
                 <tbody>
                     @foreach($tag as $tags)
                     <tr>
                         <td>{{$tags -> id}}</td>
                         <td>{{$tags -> name}}</td>
+                        <td>{{$tags -> products()->count()}}</td>
                         <td>
                             <a href="#" class="btn btn-sm btn-info">Visualizar</a>
                             <a href="{{route('tag.edit', $tags->id) }}" class="btn btn-sm btn-warning">Editar</a>
